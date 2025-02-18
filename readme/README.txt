@@ -18,7 +18,7 @@ Debe estar dentro de una carpeta: `cuda_AILocal`
 
 ---
 
-# cuda_AILocal
+# cuda_ailocal
 
 #### About this addon
 
