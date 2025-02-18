@@ -39,4 +39,5 @@ It must be inside a folder: `cuda_AILocal`
 ![videoDemo.gif](videoDemo.gif)
 
 Author: Walter Wagner
+
 License: MIT
