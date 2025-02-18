@@ -1,0 +1,41 @@
+[info]
+title=AI Local
+desc=Connect to Local LLM
+type=cudatext-plugin
+subdir=cuda_r_plugin
+homepage=(to write)
+
+[item1]
+section=events
+events=on_exit
+
+; [item2]
+; section=commands
+; caption=AI Local\Open side panel
+; method=open_side_panel
+
+[item3]
+section=commands
+caption=AI Local\Over Selected Text
+method=over_selected_text
+
+[item5]
+section=commands
+caption=AI Local\Open console
+method=open_console
+
+[item10]
+section=commands
+caption=AI Local\Config
+method=config
+menu=o
+
+; [sidebar1]
+; hint=R Objects
+; icon={dir}/r_icon.png
+; method=open_side_panel
+
+[bottombar1]
+hint=AI Local
+icon={dir}/AIBrainIcon.png
+method=open_console
