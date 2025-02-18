@@ -14,7 +14,7 @@ Debe estar dentro de una carpeta: `cuda_AILocal`
 - Ctrl+Shift+P
 - AI Local\Config
 
-**Nota:** por el momento solo probado con Ollama
+> **Nota:** por el momento solo probado con Ollama
 
 ---
 
