@@ -2,7 +2,7 @@
 
 #### Sobre este addon
 
-Es un plugin sencillo que se puede conectar a Ollama para utilizar un LLM de forma local.
+Es un plugin sencillo para `Cudatext` que se puede conectar a Ollama para utilizar un LLM de forma local.
 
 #### Instalación
 
