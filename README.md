@@ -22,7 +22,7 @@ Debe estar dentro de una carpeta: `cuda_AILocal`
 
 #### About this addon
 
-It is a simple plugin that can be connected to Ollama to use a LLM locally.
+It is a simple plugin for `Cudatext` that can be connected to Ollama to use an LLM locally.
 
 #### Installation
 
