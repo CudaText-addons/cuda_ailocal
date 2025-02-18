@@ -1,4 +1,4 @@
-# cuda_AILocal
+# cuda_ailocal
 
 #### Sobre este addon
 
