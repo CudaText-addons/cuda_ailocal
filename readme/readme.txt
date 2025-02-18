@@ -7,7 +7,7 @@ It is a simple plugin for CudaText that can be connected to Ollama to use an LLM
 #### Installation
 
 Download the repository content and unzip it in the `CudaText\py` folder.
-It must be inside a folder: `cuda_AILocal`
+It must be inside a folder: `cuda_ailocal`
 
 #### Configuration
 
