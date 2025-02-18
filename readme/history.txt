@@ -1,3 +1,0 @@
-2025-02-18
-+ Initial version
-+ My first Cudatext plugin
