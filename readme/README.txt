@@ -2,7 +2,7 @@
 
 #### Sobre este addon
 
-Es un plugin sencillo que se puede conectar a Ollama para utilizar un LLM de forma local.
+Es un plugin sencillo para `Cudatext` que se puede conectar a Ollama para utilizar un LLM de forma local.
 
 #### Instalación
 
@@ -14,7 +14,7 @@ Debe estar dentro de una carpeta: `cuda_AILocal`
 - Ctrl+Shift+P
 - AI Local\Config
 
-**Nota:** por el momento solo probado con Ollama
+> **Nota:** por el momento solo probado con Ollama
 
 ---
 
@@ -22,7 +22,7 @@ Debe estar dentro de una carpeta: `cuda_AILocal`
 
 #### About this addon
 
-It is a simple plugin that can be connected to Ollama to use a LLM locally.
+It is a simple plugin for `Cudatext` that can be connected to Ollama to use an LLM locally.
 
 #### Installation
 
@@ -39,4 +39,5 @@ It must be inside a folder: `cuda_AILocal`
 ![videoDemo.gif](videoDemo.gif)
 
 Author: Walter Wagner
+
 License: MIT
