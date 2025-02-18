@@ -45,38 +45,44 @@ class Command:
             self.font_size = int(ini_read(fn_config, 'op', 'font_size', '9'))
         except:
             ini_write(fn_config, 'op', 'font_size', '9')
-            pass
 
         try:
             self.max_history = int(ini_read(fn_config, 'op', 'max_history', '10'))
         except:
             ini_write(fn_config, 'op', 'max_history', '10')
-            pass
 
         try:
-            self.url = ini_read(fn_config, 'op', 'url', '')
-        except Exception as e:
-            print("ERROR; ", e)
+            self.url = str(ini_read(fn_config, 'op', 'url', ''))
+            if self.url == "":
+                ini_write(fn_config, 'op', 'url', 'http://localhost:11434/api/generate')
+                self.url = 'http://localhost:11434/api/generate'                
+        except:
             ini_write(fn_config, 'op', 'url', 'http://localhost:11434/api/generate')
 
         try:
-            self.key = ini_read(fn_config, 'op', 'key', '')
+            self.key = str(ini_read(fn_config, 'op', 'key', ''))
+            if self.key == "":
+                ini_write(fn_config, 'op', 'key', '')
+                self.key = ""
         except:
-            ini_write(fn_config, 'op', 'key', '')            
+            ini_write(fn_config, 'op', 'key', '')
 
         try:
             # self.model = int(ini_read(fn_config, 'op', 'model', 'qwen2.5-coder:3b'))
-            self.model = ini_read(fn_config, 'op', 'model', '')
+            self.model = str(ini_read(fn_config, 'op', 'model', ''))
+            if self.model == "":
+                ini_write(fn_config, 'op', 'model', 'qwen2.5-coder:3b')
+                self.model = "qwen2.5-coder:3b"
         except:
             ini_write(fn_config, 'op', 'model', 'qwen2.5-coder:3b')
-            pass
 
         try:
             # self.temperature = int(ini_read(fn_config, 'op', 'temperature', '1'))
-            self.temperature = ini_read(fn_config, 'op', 'temperature', '')
+            self.temperature = float(ini_read(fn_config, 'op', 'temperature', ''))
         except:
             ini_write(fn_config, 'op', 'temperature', '1')
-            pass
+            self.temperature = 1.0
+
 
         #self.dark_colors = str_to_bool(ini_read(fn_config, 'op', 'dark_colors', '1'))
         # self.show_toolbar_small = str_to_bool(ini_read(fn_config, 'op', 'show_toolbar_small', '1'))
@@ -138,7 +144,7 @@ class Command:
         app_proc(PROC_BOTTOMPANEL_ADD_DIALOG, (self.title_console, self.h_console, fn_icon))
 
     def over_selected_text(self):
-        self.overSelected = True
+        self.over_selected = True
         self.open_console()
         self.run_cmd("")
 
