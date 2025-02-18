@@ -12,7 +12,7 @@ It must be inside a folder: `cuda_ailocal`
 #### Configuration
 
 - Ctrl+Shift+P
-- AI LocalConfig
+- AI Local: Config
 
 **Note:** for the moment only tested with Ollama
 
@@ -34,7 +34,7 @@ Debe estar dentro de una carpeta: `cuda_ailocal`
 #### Configuración
 
 - Ctrl+Shift+P
-- AI Local\Config
+- AI Local: Config
 
 > **Nota:** por el momento solo probado con Ollama
 
