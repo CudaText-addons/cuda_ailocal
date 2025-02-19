@@ -132,7 +132,6 @@ class Command:
         app_proc(PROC_BOTTOMPANEL_ADD_DIALOG, (self.title_console, self.h_console, fn_icon))
 
     def over_selected_text(self):
-        self.over_selected = True
         self.open_console()
         self.run_cmd("")
 
