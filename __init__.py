@@ -75,8 +75,6 @@ class Command:
             ini_write(fn_config, 'op', 'temperature', '1.0')
 
         #self.dark_colors = str_to_bool(ini_read(fn_config, 'op', 'dark_colors', '1'))
-        # self.show_toolbar_small = str_to_bool(ini_read(fn_config, 'op', 'show_toolbar_small', '1'))
-        self.show_toolbar_small = False
         
         self.h_menu = menu_proc(0, MENU_CREATE)
 
@@ -204,7 +202,7 @@ class Command:
             'a_r': ('enter', '['),
             'a_t': ('enter', '-'),
             'font_size': cur_font_size,
-            'texthint': 'Enter the prompt text here for the selected text: (/help):',
+            'texthint': 'Enter the prompt text for the selected text (or /help):',
             })
         self.input = Editor(dlg_proc(h, DLG_CTL_HANDLE, index=n))
 
@@ -260,7 +258,6 @@ class Command:
         ini_write(fn_config, 'op', 'model', str(self.model))
         ini_write(fn_config, 'op', 'temperature', str(self.temperature))
         #ini_write(fn_config, 'op', 'dark_colors', bool_to_str(self.dark_colors))
-        ini_write(fn_config, 'op', 'show_toolbar_small', bool_to_str(self.show_toolbar_small))
 
         file_open(fn_config)
 
@@ -367,9 +364,12 @@ class Command:
 
         self.input.set_text_all('')
 
+        self.print_in_memo("\n>>> User prompt\n")
+        line_text = text
+        self.print_in_memo(line_text)
+
         threadLLMObj = Thread(target=self.thread_ollama, args=(text,))
         if threadLLMObj.is_alive():
-            print("Volviendo ya hay un hilo corriendo")
             return
         threadLLMObj.start()
 
@@ -384,11 +384,13 @@ class Command:
             "prompt": text
         }
 
+        self.print_in_memo("\n>>> Bot AI\n")
+        
         try:
             response = requests.post(self.url, headers=headers, json=data, stream=True)
         except Exception as e:
-            errorLines = str(e).split("\n")
-            self.print_in_memo("Error:".split("\n"))
+            errorLines = str(e)
+            self.print_in_memo("Error: ")
             self.print_in_memo(errorLines)
             return
 
@@ -399,12 +401,12 @@ class Command:
                 decoded_line = line.decode('utf-8')
                 line_resp = line_resp + str(json.loads(decoded_line)["response"])
 
-        allLines = line_resp.split("\n")
-        self.print_in_memo(allLines)
+        self.print_in_memo(line_resp)
 
     def print_in_memo(self, text):
+        text_line = text.split("\n")
         self.memo.set_prop(PROP_RO, False)
-        for linex in text:
+        for linex in text_line:
             self.memo.set_text_line(-1, linex)
         self.memo.set_prop(PROP_RO, True)
 

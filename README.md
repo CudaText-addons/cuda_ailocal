@@ -2,7 +2,7 @@
 
 #### About this addon
 
-It is a simple plugin for CudaText that can be connected to Ollama to use an LLM locally.
+Plugin for CudaText to connect to Ollama to use an LLM locally.
 
 #### Installation
 
@@ -33,7 +33,7 @@ The first line can be the prompt, the rest is the code.
 
 #### Sobre este addon
 
-Es un plugin sencillo para CudaText que se puede conectar a Ollama para utilizar un LLM de forma local.
+Plugin para CudaText para conectarse a Ollama para utilizar un LLM localmente.
 
 #### Instalación
 
