@@ -364,7 +364,7 @@ class Command:
 
         self.input.set_text_all('')
 
-        self.print_in_memo("\n>>> User prompt\n")
+        self.print_in_memo("\nUser prompt\n")
         self.print_in_memo(text)
 
         threadLLMObj = Thread(target=self.thread_ollama, args=(text,))
@@ -383,7 +383,7 @@ class Command:
             "prompt": text
         }
 
-        self.print_in_memo("\n>>> Bot AI\n")
+        self.print_in_memo("\nBot AI\n")
         
         try:
             response = requests.post(self.url, headers=headers, json=data, stream=True)
@@ -406,7 +406,7 @@ class Command:
         text_line = text.split("\n")
         self.memo.set_prop(PROP_RO, False)
         for linex in text_line:
-            self.memo.set_text_line(-1, linex)
+            self.memo.set_text_line(-1, ">>> " + linex)
         self.memo.set_prop(PROP_RO, True)
 
     def exec(self, s):
