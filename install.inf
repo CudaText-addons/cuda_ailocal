@@ -9,11 +9,6 @@ homepage=https://github.com/walterm128/cuda_ailocal
 section=events
 events=on_exit
 
-; [item2]
-; section=commands
-; caption=AI Local\Open side panel
-; method=open_side_panel
-
 [item3]
 section=commands
 caption=AI Local\Run over selected text
@@ -36,6 +31,6 @@ menu=o
 ; method=open_side_panel
 
 [bottombar1]
-hint=AI Local
+hint=AI Local Console
 icon={dir}/aibrainicon.png
 method=open_console
