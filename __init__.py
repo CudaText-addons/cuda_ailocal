@@ -367,7 +367,7 @@ class Command:
 
         self.input.set_text_all('')
 
-        threadLLMObj = Thread(target=self.threadOllama, args=(text,))
+        threadLLMObj = Thread(target=self.thread_ollama, args=(text,))
         if threadLLMObj.is_alive():
             print("Volviendo ya hay un hilo corriendo")
             return
@@ -375,7 +375,7 @@ class Command:
 
         self.exec(text)
 
-    def threadOllama(self, text):
+    def thread_ollama(self, text):
         # LLM Connect
         headers = {"Authorization": f"Bearer {self.key}"}
         data = {
@@ -388,8 +388,8 @@ class Command:
             response = requests.post(self.url, headers=headers, json=data, stream=True)
         except Exception as e:
             errorLines = str(e).split("\n")
-            self.printInMemo("Error:".split("\n"))
-            self.printInMemo(errorLines)
+            self.print_in_memo("Error:".split("\n"))
+            self.print_in_memo(errorLines)
             return
 
         line_resp = ""
@@ -400,9 +400,9 @@ class Command:
                 line_resp = line_resp + str(json.loads(decoded_line)["response"])
 
         allLines = line_resp.split("\n")
-        self.printInMemo(allLines)
+        self.print_in_memo(allLines)
 
-    def printInMemo(self, text):
+    def print_in_memo(self, text):
         self.memo.set_prop(PROP_RO, False)
         for linex in text:
             self.memo.set_text_line(-1, linex)
