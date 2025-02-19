@@ -37,5 +37,5 @@ menu=o
 
 [bottombar1]
 hint=AI Local
-icon={dir}/AIBrainIcon.png
+icon={dir}/aibrainicon.png
 method=open_console
