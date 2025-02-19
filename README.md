@@ -18,6 +18,15 @@ It must be inside a folder: `cuda_ailocal`
 
 ![videoDemo.gif](videoDemo.gif)
 
+#### Prompt on the selected text
+
+- Ctrl+Shift+P
+- AI Local: Over Selected Text
+
+The first line can be the prompt, the rest is the code.
+
+![videoDemo2.gif](videoDemo2.gif)
+
 ---
 
 # cuda_ailocal
@@ -37,6 +46,13 @@ Debe estar dentro de una carpeta: `cuda_ailocal`
 - AI Local: Config
 
 > **Nota:** por el momento solo probado con Ollama
+
+#### Prompt sobre el texto seleccionado
+
+- Ctrl+Shift+P
+- AI Local: Over Selected Text
+
+La primera linea puede el prompt el resto es el código.
 
 Author: Walter Wagner
 
