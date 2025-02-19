@@ -52,37 +52,27 @@ class Command:
             ini_write(fn_config, 'op', 'max_history', '10')
 
         try:
-            self.url = str(ini_read(fn_config, 'op', 'url', ''))
-            if self.url == "":
-                ini_write(fn_config, 'op', 'url', 'http://localhost:11434/api/generate')
-                self.url = 'http://localhost:11434/api/generate'                
+            self.url = str(ini_read(fn_config, 'op', 'url', 'http://localhost:11434/api/generate'))
         except:
+            # Ollama URL
             ini_write(fn_config, 'op', 'url', 'http://localhost:11434/api/generate')
 
         try:
             self.key = str(ini_read(fn_config, 'op', 'key', ''))
-            if self.key == "":
-                ini_write(fn_config, 'op', 'key', '')
-                self.key = ""
         except:
             ini_write(fn_config, 'op', 'key', '')
 
         try:
-            # self.model = int(ini_read(fn_config, 'op', 'model', 'qwen2.5-coder:3b'))
-            self.model = str(ini_read(fn_config, 'op', 'model', ''))
-            if self.model == "":
-                ini_write(fn_config, 'op', 'model', 'qwen2.5-coder:3b')
-                self.model = "qwen2.5-coder:3b"
+            self.model = str(ini_read(fn_config, 'op', 'model', 'qwen2.5-coder:3b'))
         except:
+            # Example model
             ini_write(fn_config, 'op', 'model', 'qwen2.5-coder:3b')
 
         try:
-            # self.temperature = int(ini_read(fn_config, 'op', 'temperature', '1'))
-            self.temperature = float(ini_read(fn_config, 'op', 'temperature', ''))
+            self.temperature = float(ini_read(fn_config, 'op', 'temperature', '1.0'))
         except:
-            ini_write(fn_config, 'op', 'temperature', '1')
-            self.temperature = 1.0
-
+            # Temperature by default
+            ini_write(fn_config, 'op', 'temperature', '1.0')
 
         #self.dark_colors = str_to_bool(ini_read(fn_config, 'op', 'dark_colors', '1'))
         # self.show_toolbar_small = str_to_bool(ini_read(fn_config, 'op', 'show_toolbar_small', '1'))
@@ -266,6 +256,9 @@ class Command:
 
         ini_write(fn_config, 'op', 'max_history', str(self.max_history))
         ini_write(fn_config, 'op', 'font_size', str(self.font_size))
+        ini_write(fn_config, 'op', 'url', str(self.url))
+        ini_write(fn_config, 'op', 'model', str(self.model))
+        ini_write(fn_config, 'op', 'temperature', str(self.temperature))
         #ini_write(fn_config, 'op', 'dark_colors', bool_to_str(self.dark_colors))
         ini_write(fn_config, 'op', 'show_toolbar_small', bool_to_str(self.show_toolbar_small))
 
