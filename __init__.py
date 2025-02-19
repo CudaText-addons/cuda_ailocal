@@ -356,7 +356,7 @@ class Command:
             self.memo.set_text_line(-1,"Option 1: select the text and type the prompt")
             self.memo.set_text_line(-1,"Option 2: just type the prompt")
             self.memo.set_text_line(-1,"/clear: clear the console text")
-            self.memo.set_text_line(-1,"/insert: insert console selected text in the file")
+            self.memo.set_text_line(-1,"/insert: insert console selected text to the current document")
             self.memo.set_prop(PROP_RO, True)
             return
 
@@ -365,8 +365,7 @@ class Command:
         self.input.set_text_all('')
 
         self.print_in_memo("\n>>> User prompt\n")
-        line_text = text
-        self.print_in_memo(line_text)
+        self.print_in_memo(text)
 
         threadLLMObj = Thread(target=self.thread_ollama, args=(text,))
         if threadLLMObj.is_alive():
