@@ -16,7 +16,7 @@ events=on_exit
 
 [item3]
 section=commands
-caption=AI Local\Over Selected Text
+caption=AI Local\Run over selected text
 method=over_selected_text
 
 [item5]
