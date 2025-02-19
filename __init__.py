@@ -373,45 +373,6 @@ class Command:
             return
         threadLLMObj.start()
 
-#         #LLM Connect
-#         headers = {"Authorization": f"Bearer {self.key}"}
-#         data = {
-#             "model": self.model,
-#             "temperature": self.temperature,
-#             "prompt": text
-#         }
-# 
-#         try:
-#             response = requests.post(self.url, headers=headers, json=data, stream=True)
-#         except Exception as e:
-#             errorLines = str(e).split("\n")
-#             self.memo.set_prop(PROP_RO, False)
-#             self.memo.set_text_line(-1,"Error: ")
-#             for line in errorLines:
-#                 if line:
-#                     self.memo.set_text_line(-1,line)
-#                     self.memo.set_prop(PROP_SCROLL_VERT, 0x7FFFFFFF)
-#             self.memo.set_prop(PROP_RO, True)
-#             return
-#         
-# 
-#         line_resp = ""
-# 
-#         for line in response.iter_lines():
-#             if line:
-#                 decoded_line = line.decode('utf-8')
-#                 line_resp = line_resp + str(json.loads(decoded_line)["response"])
-#      
-#        
-#         allLines = line_resp.split("\n")
-# 
-#         self.memo.set_prop(PROP_RO, False)
-#         for linex in allLines:
-# 
-#             self.memo.set_text_line(-1, linex)
-#         self.memo.set_prop(PROP_SCROLL_VERT, 0x7FFFFFFF)
-#         self.memo.set_prop(PROP_RO, True)
-
         self.exec(text)
 
     def threadOllama(self, text):
