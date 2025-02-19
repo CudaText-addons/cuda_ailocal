@@ -359,7 +359,7 @@ class Command:
             self.memo.set_prop(PROP_RO, True)
             return
 
-        text = text + ed.get_text_sel()
+        text = text + "\n" + ed.get_text_sel()
 
         self.input.set_text_all('')
 
