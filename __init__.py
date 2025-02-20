@@ -74,6 +74,12 @@ class Command:
             # Temperature by default
             ini_write(fn_config, 'op', 'temperature', '1.0')
 
+        try:
+            self.del_simbols = str_to_bool(ini_read(fn_config, 'op', 'del_simbols', '1'))
+        except:
+            # Temperature by default
+            ini_write(fn_config, 'op', 'del_simbols', '1')
+
         #self.dark_colors = str_to_bool(ini_read(fn_config, 'op', 'dark_colors', '1'))
         
         self.h_menu = menu_proc(0, MENU_CREATE)
@@ -256,6 +262,7 @@ class Command:
         ini_write(fn_config, 'op', 'url', str(self.url))
         ini_write(fn_config, 'op', 'model', str(self.model))
         ini_write(fn_config, 'op', 'temperature', str(self.temperature))
+        ini_write(fn_config, 'op', 'del_simbols', str(self.del_simbols))
         #ini_write(fn_config, 'op', 'dark_colors', bool_to_str(self.dark_colors))
 
         file_open(fn_config)
@@ -339,9 +346,9 @@ class Command:
         self.upd_history_combo()
 
         if text=='/insert':
-            self.memo.set_prop(PROP_RO, False)
             ed.cmd(cmds.cCommand_TextInsert, self.memo.get_text_all())
-            self.memo.set_prop(PROP_RO, True)
+            if self.del_simbols:
+                ed.cmd(cmds.cmd_FinderAction,'repall\x01>>> \x01\x01oA')
             return
 
         if text=='/clear':

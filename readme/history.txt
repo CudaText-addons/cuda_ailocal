@@ -1,3 +1,8 @@
+2025-02-20
++ A macro is added with confirmation to delete the characters ">>> " when
+inserting, and it can be enabled or disabled in the settings.
+
+
 2025-02-18
 + Initial version
 + My first CudaText plugin
