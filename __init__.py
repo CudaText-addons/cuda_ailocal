@@ -75,7 +75,7 @@ class Command:
             ini_write(fn_config, 'op', 'temperature', '1.0')
 
         try:
-            self.del_simbols = str_to_bool(ini_read(fn_config, 'op', 'del_simbols', '1'))
+            self.del_simbols = int(ini_read(fn_config, 'op', 'del_simbols', '1'))
         except:
             # Temperature by default
             ini_write(fn_config, 'op', 'del_simbols', '1')
