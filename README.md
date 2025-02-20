@@ -18,8 +18,8 @@ It must be inside a folder: `cuda_ailocal`
 
 Tool option: ollama or lmstudio
 
-URL Ollama: http://localhost:11434/api/generate
-URL LM Studio: http://localhost:1234/v1/chat/completions
+URL Ollama: http://localhost:11434/api/generate</br>
+URL LM Studio: http://localhost:1234/v1/chat/completions</br>
 
 Option model examples:
 - Ollama: qwen2.5-coder:3b
@@ -55,8 +55,8 @@ Debe estar dentro de una carpeta: `cuda_ailocal`
 
 Opción tool: ollama o lmstudio
 
-URL Ollama: http://localhost:11434/api/generate
-URL LM Studio: http://localhost:1234/v1/chat/completions
+URL Ollama: http://localhost:11434/api/generate</br>
+URL LM Studio: http://localhost:1234/v1/chat/completions</br>
 
 Opción model ejemplos:
 - Ollama: qwen2.5-coder:3b
