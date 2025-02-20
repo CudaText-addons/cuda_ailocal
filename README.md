@@ -2,6 +2,8 @@
 
 #### About this addon
 
+![screenshot.jpg](screenshot.jpg)
+
 Plugin for CudaText to connect to Ollama to use an LLM locally.
 
 #### Installation
@@ -14,9 +16,16 @@ It must be inside a folder: `cuda_ailocal`
 - Ctrl+Shift+P
 - AI Local: Config
 
-**Note:** for the moment only tested with Ollama
+Tool option: ollama or lmstudio
 
-![videoDemo.gif](videoDemo.gif)
+URL Ollama: http://localhost:11434/api/generate
+URL LM Studio: http://localhost:1234/v1/chat/completions
+
+Option model examples:
+- Ollama: qwen2.5-coder:3b
+- LM Studio: qwen2.5-coder-3b-instruct
+
+>Note: for the moment only tested with Ollama and LM Studio
 
 #### Prompt on the selected text
 
@@ -25,7 +34,6 @@ It must be inside a folder: `cuda_ailocal`
 
 The first line can be the prompt, the rest is the code.
 
-![videoDemo2.gif](videoDemo2.gif)
 
 ---
 
@@ -45,7 +53,16 @@ Debe estar dentro de una carpeta: `cuda_ailocal`
 - Ctrl+Shift+P
 - AI Local: Config
 
-> **Nota:** por el momento solo probado con Ollama
+Opción tool: ollama o lmstudio
+
+URL Ollama: http://localhost:11434/api/generate
+URL LM Studio: http://localhost:1234/v1/chat/completions
+
+Opción model ejemplos:
+- Ollama: qwen2.5-coder:3b
+- LM Studio: qwen2.5-coder-3b-instruct
+
+> **Nota:** por el momento solo probado con Ollama y LM Studio
 
 #### Prompt sobre el texto seleccionado
 

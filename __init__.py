@@ -80,6 +80,12 @@ class Command:
             # Temperature by default
             ini_write(fn_config, 'op', 'del_simbols', '1')
 
+        try:
+            self.tool = str(ini_read(fn_config, 'op', 'tool', 'ollama'))
+        except:
+            # Tools ollama or lmstudio
+            ini_write(fn_config, 'op', 'tool', str(self.tool))
+
         #self.dark_colors = str_to_bool(ini_read(fn_config, 'op', 'dark_colors', '1'))
         
         self.h_menu = menu_proc(0, MENU_CREATE)
@@ -263,6 +269,7 @@ class Command:
         ini_write(fn_config, 'op', 'model', str(self.model))
         ini_write(fn_config, 'op', 'temperature', str(self.temperature))
         ini_write(fn_config, 'op', 'del_simbols', str(self.del_simbols))
+        ini_write(fn_config, 'op', 'tool', str(self.tool))
         #ini_write(fn_config, 'op', 'dark_colors', bool_to_str(self.dark_colors))
 
         file_open(fn_config)
@@ -373,12 +380,50 @@ class Command:
         self.print_in_memo("\nUser prompt\n")
         self.print_in_memo(text)
 
-        threadLLMObj = Thread(target=self.thread_ollama, args=(text,))
-        if threadLLMObj.is_alive():
-            return
-        threadLLMObj.start()
+        if self.tool == "ollama":
+            thread_llm_obj = Thread(target=self.thread_ollama, args=(text,))
+            if thread_llm_obj.is_alive():
+                return
+            thread_llm_obj.start()
+        if self.tool == "lmstudio":
+            thread_llm_obj = Thread(target=self.thread_lmstudio, args=(text,))
+            if thread_llm_obj.is_alive():
+                return
+            thread_llm_obj.start()
 
         self.exec(text)
+
+    def thread_lmstudio(self, text):
+        url = self.url
+
+        # Your request payload
+        payload = {
+            "model": self.model,
+            "messages": [
+                { "role": "system", "content": "Answer" },
+                { "role": "user", "content": text }
+            ],
+            "temperature": self.temperature,
+            "max_tokens": -1,
+            "stream": False
+        }
+
+        headers = {
+            "Content-Type": "application/json"
+        }
+
+        # Send POST request
+        response = requests.post(url, headers=headers, data=json.dumps(payload))
+
+        # Check for successful response
+        if response.status_code == 200:
+            self.response_json = response.json()
+            print(self.response_json)
+            self.bot_response = self.response_json.get("choices")[0].get("message").get("content") if self.response_json.get("choices") else "Sorry, I couldn't get a response."
+            self.print_in_memo("\nBot AI\n")
+            self.print_in_memo(self.bot_response)
+        else:
+            self.print_in_memo("Error: Request failed with status code " + str(response.status_code))
 
     def thread_ollama(self, text):
         # LLM Connect
