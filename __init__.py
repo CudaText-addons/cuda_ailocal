@@ -413,7 +413,13 @@ class Command:
         }
 
         # Send POST request
-        response = requests.post(url, headers=headers, data=json.dumps(payload))
+        try:
+            response = requests.post(url, headers=headers, data=json.dumps(payload))
+        except Exception as e:
+            self.print_in_memo("Error: ")
+            self.print_in_memo(str(e))
+            return
+        
 
         # Check for successful response
         if response.status_code == 200:
@@ -439,9 +445,8 @@ class Command:
         try:
             response = requests.post(self.url, headers=headers, json=data, stream=True)
         except Exception as e:
-            errorLines = str(e)
             self.print_in_memo("Error: ")
-            self.print_in_memo(errorLines)
+            self.print_in_memo(str(e))
             return
 
         line_resp = ""
