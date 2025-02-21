@@ -498,7 +498,6 @@ class Command:
         self.input.set_caret(0, 0)
         self.run_cmd(text)
         return False
-        pass
 
 
     def callback_list_dblclick(self, id_dlg, id_ctl, data='', info=''):
