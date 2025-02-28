@@ -25,12 +25,7 @@ caption=AI Local\Config
 method=config
 menu=o
 
-; [sidebar1]
-; hint=R Objects
-; icon={dir}/r_icon.png
-; method=open_side_panel
-
 [bottombar1]
 hint=AI Local Console
-icon={dir}/aibrainicon.png
+icon={dir}/ailocal.png
 method=open_console

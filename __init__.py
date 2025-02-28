@@ -19,7 +19,7 @@ import json
 from cudax_lib import get_translation
 _ = get_translation(__file__)  # i18n
 
-fn_icon = os.path.join(os.path.dirname(__file__), 'aibrainicon.png')
+fn_icon = os.path.join(os.path.dirname(__file__), 'ailocal.png')
 fn_config = os.path.join(app_path(APP_DIR_SETTINGS), 'cuda_ailocal.ini')
 MAX_BUFFER = 100*1000
 IS_WIN = os.name=='nt'

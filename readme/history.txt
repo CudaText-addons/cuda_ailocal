@@ -1,3 +1,7 @@
+2025-02-28
++ Change in the icon design for better visibility
++ Change in the icon name
+
 2025-02-20
 + A macro is added with confirmation to delete the characters ">>> " when
 inserting, and it can be enabled or disabled in the settings.
