@@ -1,5 +1,5 @@
 2025-03-02
-+ Support for translation (patch by Markus F.)
++ Better support for translation (patch by Markus F.)
 
 2025-02-28
 + Change in the icon design for better visibility
