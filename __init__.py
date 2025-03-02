@@ -270,6 +270,7 @@ class Command:
         ini_write(fn_config, 'op', 'temperature', str(self.temperature))
         ini_write(fn_config, 'op', 'del_simbols', str(self.del_simbols))
         ini_write(fn_config, 'op', 'tool', str(self.tool))
+        ini_write(fn_config, 'op', 'key', str(self.tool))
         #ini_write(fn_config, 'op', 'dark_colors', bool_to_str(self.dark_colors))
 
         file_open(fn_config)
@@ -397,6 +398,7 @@ class Command:
         url = self.url
 
         # Your request payload
+        headers = {"Authorization": f"Bearer {self.key}"}
         payload = {
             "model": self.model,
             "messages": [
@@ -416,7 +418,7 @@ class Command:
         try:
             response = requests.post(url, headers=headers, data=json.dumps(payload))
         except Exception as e:
-            self.print_in_memo("Error: ")
+            self.print_in_memo("Error LM Studio: ")
             self.print_in_memo(str(e))
             return
 
@@ -433,8 +435,8 @@ class Command:
 
     def thread_ollama(self, text):
         # LLM Connect
-        #headers = {"Authorization": f"Bearer {self.key}"}
-        headers = {_("Authorization: Bearer {}").format(self.key)}
+        headers = {"Authorization": f"Bearer {self.key}"}
+        # headers = {"Authorization: Bearer {}".format(self.key)}
         data = {
             "model": self.model,
             "temperature": self.temperature,
@@ -446,7 +448,7 @@ class Command:
         try:
             response = requests.post(self.url, headers=headers, json=data, stream=True)
         except Exception as e:
-            self.print_in_memo("Error: ")
+            self.print_in_memo("Error Ollama: ")
             self.print_in_memo(str(e))
             return
 

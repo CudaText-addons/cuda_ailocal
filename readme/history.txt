@@ -1,5 +1,7 @@
 2025-03-02
 + Better support for translation (patch by Markus F.)
++ Translation added to Spanish. 
++ Added key header
 
 2025-02-28
 + Change in the icon design for better visibility
