@@ -1,6 +1,6 @@
 2025-03-02
 + Better support for translation (patch by Markus F.)
-+ Translation added to Spanish. 
++ Spanish translation added 
 + Added key header
 
 2025-02-28
