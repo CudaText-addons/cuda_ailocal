@@ -87,12 +87,12 @@ class Command:
             ini_write(fn_config, 'op', 'tool', str(self.tool))
 
         #self.dark_colors = str_to_bool(ini_read(fn_config, 'op', 'dark_colors', '1'))
-        
+
         self.h_menu = menu_proc(0, MENU_CREATE)
 
         self.load_history()
 
-        #for-loop don't work here
+        #for-loop doesn't work here
         self.menu_calls = []
         self.menu_calls += [ lambda: self.run_cmd_n(0) ]
         self.menu_calls += [ lambda: self.run_cmd_n(1) ]
@@ -149,7 +149,7 @@ class Command:
 
     def open_side_panel(self):
 
-        # dont init form twice!
+        # don't init form twice!
         if not self.h_side:
             self.init_forms()
 
@@ -159,14 +159,14 @@ class Command:
 
     def open_console(self):
 
-        #dont init form twice!
+        #don't init form twice!
         if not self.h_console:
             self.init_forms()
 
         dlg_proc(self.h_console, DLG_CTL_FOCUS, name='input')
 
         app_proc(PROC_BOTTOMPANEL_ACTIVATE, (self.title_console, True)) #True - set focus
-        
+
     def init_console_form(self):
 
         colors = app_proc(PROC_THEME_UI_DICT_GET,'')
@@ -200,7 +200,7 @@ class Command:
             'w': 90,
             'h': INPUT_H,
             'cap': 'Enter',
-            'hint': 'Hotkey: Enter',
+            'hint': _('Hotkey: Enter'),
             'on_change': self.button_enter_click,
             })
 
@@ -213,7 +213,7 @@ class Command:
             'a_r': ('enter', '['),
             'a_t': ('enter', '-'),
             'font_size': cur_font_size,
-            'texthint': 'Enter the prompt text for the selected text (or /help):',
+            'texthint': _('Enter the prompt text for the selected text (or /help):'),
             })
         self.input = Editor(dlg_proc(h, DLG_CTL_HANDLE, index=n))
 
@@ -366,18 +366,18 @@ class Command:
 
         if text=='/help':
             self.memo.set_prop(PROP_RO, False)
-            self.memo.set_text_line(-1,"Option 1: select the text and type the prompt")
-            self.memo.set_text_line(-1,"Option 2: just type the prompt")
-            self.memo.set_text_line(-1,"/clear: clear the console text")
-            self.memo.set_text_line(-1,"/insert: insert console selected text to the current document")
+            self.memo.set_text_line(-1,_("Option 1: select the text and type the prompt"))
+            self.memo.set_text_line(-1,_("Option 2: just type the prompt"))
+            self.memo.set_text_line(-1,_("/clear: clear the console text"))
+            self.memo.set_text_line(-1,_("/insert: insert console selected text to the current document"))
             self.memo.set_prop(PROP_RO, True)
             return
 
-        text = text + "\n" + ed.get_text_sel()
+        text += "\n" + ed.get_text_sel()
 
         self.input.set_text_all('')
 
-        self.print_in_memo("\nUser prompt\n")
+        self.print_in_memo(_("\nUser prompt\n"))
         self.print_in_memo(text)
 
         if self.tool == "ollama":
@@ -400,7 +400,7 @@ class Command:
         payload = {
             "model": self.model,
             "messages": [
-                { "role": "system", "content": "Answer" },
+                { "role": "system", "content": _("Answer") },
                 { "role": "user", "content": text }
             ],
             "temperature": self.temperature,
@@ -419,21 +419,22 @@ class Command:
             self.print_in_memo("Error: ")
             self.print_in_memo(str(e))
             return
-        
+
 
         # Check for successful response
         if response.status_code == 200:
             self.response_json = response.json()
             print(self.response_json)
-            self.bot_response = self.response_json.get("choices")[0].get("message").get("content") if self.response_json.get("choices") else "Sorry, I couldn't get a response."
+            self.bot_response = self.response_json.get("choices")[0].get("message").get("content") if self.response_json.get("choices") else _("Sorry, I couldn't get a response.")
             self.print_in_memo("\nBot AI\n")
             self.print_in_memo(self.bot_response)
         else:
-            self.print_in_memo("Error: Request failed with status code " + str(response.status_code))
+            self.print_in_memo(_("Error: Request failed with status code ") + str(response.status_code))
 
     def thread_ollama(self, text):
         # LLM Connect
-        headers = {"Authorization": f"Bearer {self.key}"}
+        #headers = {"Authorization": f"Bearer {self.key}"}
+        headers = {_("Authorization: Bearer {}").format(self.key)}
         data = {
             "model": self.model,
             "temperature": self.temperature,
@@ -441,7 +442,7 @@ class Command:
         }
 
         self.print_in_memo("\nBot AI\n")
-        
+
         try:
             response = requests.post(self.url, headers=headers, json=data, stream=True)
         except Exception as e:
@@ -466,7 +467,7 @@ class Command:
         self.memo.set_prop(PROP_RO, True)
 
     def exec(self, s):
-        
+
         pass
 
 
@@ -508,7 +509,7 @@ class Command:
         if index<0:
             return
 
-        ed.cmd(cmds.cCommand_TextInsert, 'Inserted item %d...'%index)
+        ed.cmd(cmds.cCommand_TextInsert, _('Inserted item %d...') % index)
 
 
     def set_imagelist_size(self, theme_name, imglist):
@@ -523,7 +524,7 @@ class Command:
 
         imagelist_proc(imglist, IMAGELIST_SET_SIZE, (n, n))
 
-    
+
     def toolbar_add_btn(self, h_bar, hint, icon=-1, command=''):
 
         toolbar_proc(h_bar, TOOLBAR_ADD_ITEM)
@@ -536,13 +537,13 @@ class Command:
             button_proc(h_btn, BTN_SET_HINT, hint)
             button_proc(h_btn, BTN_SET_IMAGEINDEX, icon)
             button_proc(h_btn, BTN_SET_DATA1, command)
-    
+
 
     def action_open_project(self, info=None):
-        
-        msg_box('Open Project action', MB_OK)
+
+        msg_box(_('Open Project action'), MB_OK)
 
 
     def action_save_project_as(self, info=None):
-        
-        msg_box('Save Project As action', MB_OK)
+
+        msg_box(_('Save Project As action'), MB_OK)
