@@ -270,7 +270,7 @@ class Command:
         ini_write(fn_config, 'op', 'temperature', str(self.temperature))
         ini_write(fn_config, 'op', 'del_simbols', str(self.del_simbols))
         ini_write(fn_config, 'op', 'tool', str(self.tool))
-        ini_write(fn_config, 'op', 'key', str(self.tool))
+        ini_write(fn_config, 'op', 'key', str(self.key))
         #ini_write(fn_config, 'op', 'dark_colors', bool_to_str(self.dark_colors))
 
         file_open(fn_config)
