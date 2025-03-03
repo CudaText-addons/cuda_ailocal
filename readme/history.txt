@@ -1,3 +1,6 @@
+2025-03-03
++ Fix key config file
+
 2025-03-02
 + Better support for translation (patch by Markus F.)
 + Spanish translation added 
