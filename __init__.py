@@ -40,7 +40,6 @@ class Command:
     threadText = ""
 
     def __init__(self):
-
         try:
             self.font_size = int(ini_read(fn_config, 'op', 'font_size', '9'))
         except:

@@ -1,5 +1,6 @@
 2025-03-03
 + Fix key config file
++ Fixed directory and translation name
 
 2025-03-02
 + Better support for translation (patch by Markus F.)
