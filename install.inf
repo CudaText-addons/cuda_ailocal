@@ -23,7 +23,6 @@ method=open_console
 section=commands
 caption=AI Local\Config
 method=config
-menu=o
 
 [bottombar1]
 hint=AI Local Console
